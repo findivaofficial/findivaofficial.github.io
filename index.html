@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
 
   <meta name="viewport"
@@ -26,170 +27,574 @@
       padding: 0;
       width: 100%;
       min-height: 100%;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
       background: #10172f;
       color: #ffffff;
     }
 
     body {
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
+      overflow-x: hidden;
     }
 
-    .container {
+    /* =========================
+       BACKGROUND
+    ========================= */
+
+    .background {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .circle.one {
+      width: 520px;
+      height: 520px;
+      top: -260px;
+      right: -160px;
+    }
+
+    .circle.two {
+      width: 380px;
+      height: 380px;
+      bottom: -220px;
+      left: -150px;
+    }
+
+    .circle.three {
+      width: 180px;
+      height: 180px;
+      top: 20%;
+      left: 7%;
+      border-color: rgba(255,255,255,0.05);
+    }
+
+    /* =========================
+       PAGE
+    ========================= */
+
+    .page {
+      position: relative;
+      z-index: 1;
       width: 100%;
-      max-width: 760px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      width: 100%;
+      padding: 24px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: 3px;
+    }
+
+    .header-tag {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      color: #aeb6cc;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 55px 24px 40px;
       text-align: center;
     }
 
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 15px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 30px;
+      color: #cbd2e5;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
     .brand {
-      font-size: 52px;
-      font-weight: 800;
-      letter-spacing: 4px;
-      margin-bottom: 10px;
+      font-size: clamp(52px, 9vw, 92px);
+      line-height: 0.95;
+      font-weight: 900;
+      letter-spacing: 7px;
+      margin: 0;
     }
 
     .tagline {
-      font-size: 20px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      margin-bottom: 24px;
+      margin-top: 18px;
+      font-size: clamp(17px, 3vw, 25px);
+      font-weight: 700;
+      letter-spacing: 3px;
     }
 
     .intro {
-      max-width: 620px;
-      margin: 0 auto 34px;
-      color: #d9deed;
+      max-width: 680px;
+      margin: 24px auto 0;
+      color: #d2d8e8;
       font-size: 17px;
       line-height: 1.7;
     }
 
-    .status {
-      font-size: 15px;
+    /* =========================
+       FEATURE CARDS
+    ========================= */
+
+    .features {
+      max-width: 850px;
+      margin: 42px auto 36px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .feature {
+      padding: 20px 15px;
+      border: 1px solid rgba(255,255,255,0.11);
+      background: rgba(255,255,255,0.045);
+      border-radius: 14px;
+      backdrop-filter: blur(8px);
+    }
+
+    .feature-icon {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .feature-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+    }
+
+    .feature-text {
+      margin-top: 7px;
       color: #aeb6cc;
-      margin-bottom: 20px;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* =========================
+       OPENING
+    ========================= */
+
+    .opening {
+      margin-top: 12px;
+    }
+
+    .status {
+      color: #aeb6cc;
+      font-size: 14px;
       line-height: 1.6;
     }
 
     .countdown {
-      font-weight: 700;
+      display: inline-block;
+      min-width: 22px;
       color: #ffffff;
+      font-weight: 800;
+      font-size: 18px;
     }
 
-    button {
+    .enter-button {
+      margin-top: 18px;
+      padding: 15px 30px;
       border: none;
       border-radius: 10px;
-      padding: 15px 28px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
       background: #ffffff;
       color: #10172f;
-      transition: transform 0.15s ease, opacity 0.15s ease;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      transition:
+        transform 0.15s ease,
+        opacity 0.15s ease;
     }
 
-    button:hover {
+    .enter-button:hover {
       transform: translateY(-2px);
       opacity: 0.92;
     }
 
-    .privacy {
-      margin-top: 38px;
-      font-size: 13px;
-      color: #aeb6cc;
-      line-height: 1.6;
+    /* =========================
+       PRIVACY MESSAGE
+    ========================= */
+
+    .privacy-message {
+      max-width: 650px;
+      margin: 38px auto 0;
+      padding: 18px 20px;
+      border-left: 2px solid rgba(255,255,255,0.25);
+      border-right: 2px solid rgba(255,255,255,0.25);
+      color: #b8c0d5;
+      font-size: 12px;
+      line-height: 1.7;
     }
 
-    @media (max-width: 600px) {
+    .privacy-message strong {
+      color: #ffffff;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      width: 100%;
+      padding: 20px 24px 25px;
+      text-align: center;
+      color: #7f89a4;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+
+    footer .footer-brand {
+      color: #b7bfd3;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 700px) {
+
+      header {
+        padding: 20px 20px;
+      }
+
+      .logo {
+        font-size: 21px;
+      }
+
+      .header-tag {
+        display: none;
+      }
+
+      main {
+        padding:
+          45px 18px 30px;
+      }
 
       .brand {
-        font-size: 40px;
+        letter-spacing: 4px;
       }
 
       .tagline {
-        font-size: 16px;
+        letter-spacing: 2px;
       }
 
       .intro {
         font-size: 15px;
       }
 
-      button {
-        width: 100%;
-        max-width: 320px;
+      .features {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin-top: 32px;
+      }
+
+      .feature {
+        padding: 17px;
+      }
+
+      .privacy-message {
+        margin-top: 30px;
+      }
+
+    }
+
+    @media (max-width: 380px) {
+
+      main {
+        padding-top: 35px;
+      }
+
+      .brand {
+        font-size: 48px;
+        letter-spacing: 3px;
+      }
+
+      .tagline {
+        font-size: 15px;
+      }
+
+      .intro {
+        font-size: 14px;
+      }
+
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .enter-button {
+        transition: none;
       }
 
     }
 
   </style>
+
 </head>
 
 <body>
 
-  <main class="container">
+  <div class="background">
+    <div class="circle one"></div>
+    <div class="circle two"></div>
+    <div class="circle three"></div>
+  </div>
 
-    <div class="brand">
-      FINDIVA
-    </div>
+  <div class="page">
 
-    <div class="tagline">
-      YOUR MATCH. OUR SEARCH.
-    </div>
+    <!-- HEADER -->
 
-    <div class="intro">
-      Human-led matchmaking search for Sri Lankans,
-      wherever life takes you.
-    </div>
+    <header>
 
-    <div class="status">
-      Opening FINDIVA in
-      <span id="countdown" class="countdown">7</span>
-      seconds...
-    </div>
+      <div class="logo">
+        FINDIVA
+      </div>
 
-    <button onclick="openFINDIVA()">
-      ENTER FINDIVA NOW
-    </button>
+      <div class="header-tag">
+        YOUR MATCH. OUR SEARCH.
+      </div>
 
-    <div class="privacy">
-      Your Match. Our Search.<br>
-      Built for Sri Lankans worldwide.
-    </div>
+    </header>
 
-  </main>
+
+    <!-- MAIN -->
+
+    <main>
+
+      <div class="eyebrow">
+        Built for Sri Lankans — Wherever Life Takes You
+      </div>
+
+
+      <h1 class="brand">
+        FINDIVA
+      </h1>
+
+
+      <div class="tagline">
+        YOUR MATCH. OUR SEARCH.
+      </div>
+
+
+      <div class="intro">
+
+        Human-led matchmaking search for Sri Lankans
+        and Sri Lankan-origin people worldwide.
+
+        <br>
+
+        <strong>
+          FINDIVA searches. You choose.
+        </strong>
+
+      </div>
+
+
+      <!-- FEATURES -->
+
+      <section class="features">
+
+        <div class="feature">
+
+          <div class="feature-icon">
+            🔎
+          </div>
+
+          <div class="feature-title">
+            FINDIVA DATABASE
+          </div>
+
+          <div class="feature-text">
+            Search profiles within the FINDIVA database.
+          </div>
+
+        </div>
+
+
+        <div class="feature">
+
+          <div class="feature-icon">
+            🌍
+          </div>
+
+          <div class="feature-title">
+            SEARCH FOR ME
+          </div>
+
+          <div class="feature-text">
+            Let our Match Advisors search across relevant sources.
+          </div>
+
+        </div>
+
+
+        <div class="feature">
+
+          <div class="feature-icon">
+            💜
+          </div>
+
+          <div class="feature-title">
+            HER PRIVACY MATTERS
+          </div>
+
+          <div class="feature-text">
+            A privacy-focused approach to female profiles and introductions.
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- OPENING -->
+
+      <section class="opening">
+
+        <div class="status">
+
+          Opening FINDIVA in
+
+          <span
+            id="countdown"
+            class="countdown">
+            7
+          </span>
+
+          seconds...
+
+        </div>
+
+
+        <button
+          class="enter-button"
+          onclick="openFINDIVA()">
+
+          ENTER FINDIVA NOW
+
+        </button>
+
+      </section>
+
+
+      <!-- PRIVACY MESSAGE -->
+
+      <div class="privacy-message">
+
+        <strong>
+          More than profiles. A better search.
+        </strong>
+
+        <br>
+
+        FINDIVA combines database search,
+        wider research and human guidance
+        to help you discover possibilities
+        you may otherwise miss.
+
+      </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+      <span class="footer-brand">
+        FINDIVA
+      </span>
+
+      &nbsp; • &nbsp;
+
+      Your Match. Our Search.
+
+      <br><br>
+
+      © FINDIVA. Built for Sri Lankans worldwide.
+
+    </footer>
+
+  </div>
+
+
+  <!-- REDIRECT -->
 
   <script>
 
     const findivaURL =
       "https://script.google.com/a/macros/hi2mail.com/s/AKfycbzGfzm2XtNUv9rcvLfiYdryeAkqdbrg3D26PB7bP0GEComFhUUt7W5idRvNNJNTXkS6/exec";
 
+
     let seconds = 7;
 
+
     function openFINDIVA() {
+
       window.location.href = findivaURL;
+
     }
+
 
     const countdownElement =
       document.getElementById("countdown");
 
-    const timer = setInterval(function () {
 
-      seconds--;
+    const timer =
+      setInterval(function () {
 
-      countdownElement.textContent = seconds;
+        seconds--;
 
-      if (seconds <= 0) {
+        countdownElement.textContent =
+          seconds;
 
-        clearInterval(timer);
 
-        openFINDIVA();
+        if (seconds <= 0) {
 
-      }
+          clearInterval(timer);
 
-    }, 1000);
+          openFINDIVA();
+
+        }
+
+      }, 1000);
 
   </script>
 
